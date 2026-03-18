@@ -10,11 +10,10 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            /* Changed from red gradient to a clean dark theme to fit the black/white icon */
             background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
             color: white;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            overflow: hidden; /* Prevents scrollbar */
+            overflow: hidden; 
         }
 
         header {
@@ -33,8 +32,7 @@
         }
 
         .company-logo {
-            height: 40px; /* Scaled to font size */
-            /* Removed the invert filter so your original icon colors show perfectly */
+            height: 40px; 
         }
 
         .company-name {
@@ -43,21 +41,26 @@
             color: white;
         }
 
+        /* Home Icon Styling */
+        .home-icon {
+            height: 24px;
+            width: auto;
+            /* Inverts the black icon to white so it shows up on the dark background */
+            filter: invert(1); 
+            opacity: 0.7;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+        }
+
         nav a {
-            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            padding: 5px 10px;
-            font-size: 16px;
-            transition: color 0.3s;
         }
 
-        nav a.active {
-            color: white;
-            border-bottom: 2px solid white;
-        }
-
-        nav a:hover:not(.active) {
-            color: white;
+        /* Hover animation for the house icon */
+        nav a:hover .home-icon {
+            opacity: 1;
+            transform: scale(1.2); /* Scales up slightly on hover */
         }
 
         main {
@@ -70,71 +73,66 @@
             position: relative;
         }
 
-        .title-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            width: 100%;
+        .content-wrapper {
+            max-width: 600px;
         }
 
         h1 {
             font-size: 48px;
             font-weight: 700;
             margin: 0;
-            color: white; /* Text is now pure white */
-            white-space: nowrap;
+            color: white;
         }
 
-        /* The fancy line from the original photo, colored white, with a hover animation */
+        /* The animated line under the title */
         .fancy-line {
-            height: 1px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), transparent);
-            margin-left: 30px;
-            width: 150px; /* Starting width */
-            opacity: 0.5;
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+            margin: 15px 0 20px 0;
+            width: 80px; /* Starting width */
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Triggers the line animation when hovering over the title container */
-        .title-container:hover .fancy-line {
-            width: 500px;
-            opacity: 1;
+        /* Triggers the line to expand when hovering over the content area */
+        .content-wrapper:hover .fancy-line {
+            width: 100%;
         }
 
         p {
-            /* Century Gothic applied strictly to the description */
             font-family: "Century Gothic", AppleGothic, sans-serif;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
             line-height: 1.6;
-            margin: 0 0 30px 0;
+            margin: 0 0 35px 0;
         }
 
+        /* 3D Offset Discord Button */
         .discord-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #5865F2; /* Standard Discord Blue */
+            background-color: #3b4cca; /* Deep blue main body */
             color: white;
             padding: 12px 30px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            max-width: 150px;
-            margin-top: 10px;
+            /* Creates the lighter blue shadow offset to the bottom left */
+            box-shadow: -6px 6px 0px #58A6FF;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            margin-top: 5px;
         }
 
+        /* Press animation for the 3D button */
         .discord-btn:hover {
-            background-color: #4752C4;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+            transform: translate(-2px, 2px); /* Moves down and left slightly */
+            box-shadow: -4px 4px 0px #58A6FF; /* Shadow shrinks to simulate pressing */
         }
 
         .discord-btn:active {
-            transform: translateY(1px);
+            transform: translate(-6px, 6px); /* Fully pressed state */
+            box-shadow: 0px 0px 0px #58A6FF; /* Shadow disappears */
         }
     </style>
 </head>
@@ -146,19 +144,21 @@
             <span class="company-name">WHITE COMPANY</span>
         </div>
         <nav>
-            <a href="#" class="active">Home</a>
+            <a href="#" class="active">
+                <img src="image_5bffde.png" alt="Home" class="home-icon">
+            </a>
         </nav>
     </header>
 
     <main>
-        <div class="title-container">
+        <div class="content-wrapper">
             <h1>Welcome to White Company</h1>
             <div class="fancy-line"></div>
+            <p>The Only company run by a small dev that's trying to make projects that are entertaining and kickstarting the fun</p>
+            <a href="https://discord.gg/tcSqqJXc3A" target="_blank" class="discord-btn">
+                Discord Invite
+            </a>
         </div>
-        <p>The Only company run by a small dev that's trying to make projects that are entertaining and kickstarting the fun</p>
-        <a href="https://discord.gg/tcSqqJXc3A" target="_blank" class="discord-btn">
-            Discord Invite
-        </a>
     </main>
 
 </body>
