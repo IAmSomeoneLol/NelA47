@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0a0a">
+    
+    <meta name="theme-color" content="#050505">
+    <meta name="color-scheme" content="dark">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <title>White Company</title>
     <style>
         /* Loading the custom local fonts from the Font folder */
@@ -49,13 +54,36 @@
 
             color: white;
             font-family: 'Cocogoose', sans-serif;
-            overflow-x: hidden; /* Changed to overflow-x to allow vertical scrolling on small phones if needed */
+            overflow-x: hidden; 
         }
 
         @keyframes gradientRoll {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        /* Initial Fade-In Animation for Text and Content */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply the fade-in to the header and main content so the background loads first */
+        header, main {
+            opacity: 0; /* Keeps them invisible until animation starts */
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        /* Slight delay for the main content to make it cascade nicely */
+        main {
+            animation-delay: 0.2s;
         }
 
         header {
@@ -253,7 +281,7 @@
             }
 
             .company-name {
-                font-size: 20px; /* Scales down the header title */
+                font-size: 20px; 
             }
 
             main {
@@ -262,15 +290,14 @@
             }
 
             h1 {
-                font-size: 36px; /* Scales down the main title */
-                white-space: normal; /* Allows the title to wrap to two lines */
+                font-size: 36px; 
+                white-space: normal; 
             }
 
             p {
                 font-size: 16px;
             }
 
-            /* Hiding the complex hover lines on touch devices for better UX */
             .nav-line-vertical, 
             .nav-line-horizontal, 
             .home-label {
@@ -310,7 +337,6 @@
 
     <script>
         function updateLineAnchors() {
-            // Check if mobile width, exit if true to save processing
             if (window.innerWidth <= 768) return; 
 
             const navContainer = document.querySelector('.nav-container');
