@@ -9,14 +9,22 @@
         @font-face {
             font-family: 'Cocogoose';
             src: url('Font/COCOGOOSE-PRO-REGULAR-TRIAL.TTF') format('truetype');
-            font-weight: 400; /* Regular weight */
+            font-weight: 400; 
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Cocogoose';
             src: url('Font/COCOGOOSE-PRO-BOLD-TRIAL.TTF') format('truetype');
-            font-weight: 700; /* Bold weight */
+            font-weight: 700; 
+            font-style: normal;
+        }
+
+        /* Loading the Century Gothic font for the description */
+        @font-face {
+            font-family: 'Century Gothic';
+            src: url('Font/CENTURY GOTHIC.TTF') format('truetype');
+            font-weight: 400; /* Regular weight */
             font-style: normal;
         }
 
@@ -32,7 +40,7 @@
             animation: gradientRoll 15s ease infinite;
 
             color: white;
-            /* Applying Cocogoose globally to all text */
+            /* Applying Cocogoose globally to all text as the default */
             font-family: 'Cocogoose', sans-serif;
             overflow: hidden; 
         }
@@ -124,13 +132,15 @@
         }
 
         p {
+            /* Overriding the global font to use Century Gothic specifically here */
+            font-family: 'Century Gothic', sans-serif;
+            font-weight: 400; /* Ensuring it is strictly unbolded */
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
             margin: 0 0 35px 0;
             max-width: 600px; 
             white-space: normal; 
-            /* Font family inherits Cocogoose from the body tag */
         }
 
         /* 3D Offset Discord Button */
