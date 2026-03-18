@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Company - Sideloading</title>
+    <title>White Company</title>
     <style>
         body, html {
             height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(135deg, #121212, #2c1a1a);
+            /* Changed from red gradient to a clean dark theme to fit the black/white icon */
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
             color: white;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            overflow: hidden; /* Prevent scrollbar */
+            overflow: hidden; /* Prevents scrollbar */
         }
 
         header {
@@ -33,12 +34,13 @@
 
         .company-logo {
             height: 40px; /* Scaled to font size */
-            filter: invert(1); /* Removes if the icon is already white */
+            /* Removed the invert filter so your original icon colors show perfectly */
         }
 
         .company-name {
             font-size: 24px;
             font-weight: 700;
+            color: white;
         }
 
         nav a {
@@ -68,36 +70,40 @@
             position: relative;
         }
 
-        /* Abstract Line Background */
-        .lines-background {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
             width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(90deg, transparent 40px, rgba(255, 255, 255, 0.05) 41px, transparent 42px),
-                linear-gradient(0deg, transparent 40px, rgba(255, 255, 255, 0.05) 41px, transparent 42px);
-            background-size: 42px 42px;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-
-        main:hover .lines-background {
-            opacity: 1;
         }
 
         h1 {
             font-size: 48px;
             font-weight: 700;
-            margin: 0 0 15px 0;
+            margin: 0;
+            color: white; /* Text is now pure white */
+            white-space: nowrap;
         }
 
-        h1 .highlight {
-            color: #d32f2f; /* Red from the original palette */
+        /* The fancy line from the original photo, colored white, with a hover animation */
+        .fancy-line {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), transparent);
+            margin-left: 30px;
+            width: 150px; /* Starting width */
+            opacity: 0.5;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+        }
+
+        /* Triggers the line animation when hovering over the title container */
+        .title-container:hover .fancy-line {
+            width: 500px;
+            opacity: 1;
         }
 
         p {
+            /* Century Gothic applied strictly to the description */
+            font-family: "Century Gothic", AppleGothic, sans-serif;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
@@ -118,6 +124,7 @@
             text-decoration: none;
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
             max-width: 150px;
+            margin-top: 10px;
         }
 
         .discord-btn:hover {
@@ -144,7 +151,10 @@
     </header>
 
     <main>
-        <div class="lines-background"></div> <h1>Welcome to <span class="highlight">White Company</span></h1>
+        <div class="title-container">
+            <h1>Welcome to White Company</h1>
+            <div class="fancy-line"></div>
+        </div>
         <p>The Only company run by a small dev that's trying to make projects that are entertaining and kickstarting the fun</p>
         <a href="https://discord.gg/tcSqqJXc3A" target="_blank" class="discord-btn">
             Discord Invite
