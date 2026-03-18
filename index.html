@@ -20,11 +20,18 @@
             font-style: normal;
         }
 
-        /* Loading the Century Gothic font for the description */
         @font-face {
             font-family: 'Century Gothic';
             src: url('Font/CENTURY GOTHIC.TTF') format('truetype');
-            font-weight: 400; /* Regular weight */
+            font-weight: 400; 
+            font-style: normal;
+        }
+
+        /* Loading the Cavilant font for the top-left title */
+        @font-face {
+            font-family: 'Cavilant';
+            src: url('Font/CAVILANT-X3JAZ.TTF') format('truetype');
+            font-weight: normal; 
             font-style: normal;
         }
 
@@ -72,9 +79,12 @@
         }
 
         .company-name {
-            font-size: 24px;
-            font-weight: 700;
+            /* Applied Cavilant exclusively here */
+            font-family: 'Cavilant', sans-serif;
+            font-size: 28px; /* Slightly bumped up for Cavilant's scaling */
+            font-weight: normal;
             color: white;
+            letter-spacing: 1px; /* Adds a bit of breathing room to the custom font */
         }
 
         /* Home Icon Styling */
@@ -113,14 +123,14 @@
 
         h1 {
             font-size: 48px;
-            font-weight: 700; /* Triggers the BOLD Cocogoose file */
+            font-weight: 700; 
             margin: 0;
             color: white;
             white-space: nowrap; 
         }
 
         .normal-weight {
-            font-weight: 400; /* Triggers the REGULAR Cocogoose file */
+            font-weight: 400; 
         }
 
         /* The expanded line under the title */
@@ -132,9 +142,8 @@
         }
 
         p {
-            /* Overriding the global font to use Century Gothic specifically here */
             font-family: 'Century Gothic', sans-serif;
-            font-weight: 400; /* Ensuring it is strictly unbolded */
+            font-weight: 400; 
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
@@ -177,7 +186,7 @@
     <header>
         <div class="logo-container">
             <img src="Image/WhiteCompany.png" alt="White Company Icon" class="company-logo">
-            <span class="company-name">White Company</span>
+            <span class="company-name">WHITE COMPANY</span>
         </div>
         <nav>
             <a href="#" class="active">
