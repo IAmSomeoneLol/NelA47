@@ -11,6 +11,15 @@
     
     <title>White Company</title>
     <style>
+        /* Completely hide the scrollbar UI across all browsers */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
         /* Loading the custom local fonts from the Font folder */
         @font-face {
             font-family: 'Cocogoose';
@@ -54,7 +63,7 @@
 
             color: white;
             font-family: 'Cocogoose', sans-serif;
-            overflow-x: hidden; 
+            overflow: hidden; /* Locks the page from scrolling/showing bars */
         }
 
         @keyframes gradientRoll {
@@ -77,7 +86,7 @@
 
         /* Apply the fade-in to the header and main content so the background loads first */
         header, main {
-            opacity: 0; /* Keeps them invisible until animation starts */
+            opacity: 0; 
             animation: fadeIn 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
