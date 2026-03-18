@@ -3,29 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Page</title>
+    <title>White Company - Sideloading</title>
     <style>
         body, html {
             height: 100%;
             margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #121212, #2c1a1a);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow: hidden; /* Prevent scrollbar */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            background-color: #f0f0f0;
+            padding: 10px 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .company-logo {
+            height: 40px; /* Scaled to font size */
+            filter: invert(1); /* Removes if the icon is already white */
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a.active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        nav a:hover:not(.active) {
+            color: white;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 100px;
+            padding-right: 100px;
+            position: relative;
+        }
+
+        /* Abstract Line Background */
+        .lines-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 40px, rgba(255, 255, 255, 0.05) 41px, transparent 42px),
+                linear-gradient(0deg, transparent 40px, rgba(255, 255, 255, 0.05) 41px, transparent 42px);
+            background-size: 42px 42px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        main:hover .lines-background {
+            opacity: 1;
         }
 
         h1 {
-            /* Century Gothic is the standard naming convention for this font stack */
-            font-family: "Century Gothic", AppleGothic, sans-serif;
-            font-weight: bold;
-            font-size: 5rem;
-            margin: 0;
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        h1 .highlight {
+            color: #d32f2f; /* Red from the original palette */
+        }
+
+        p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+        }
+
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #5865F2; /* Standard Discord Blue */
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            max-width: 150px;
+        }
+
+        .discord-btn:hover {
+            background-color: #4752C4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        .discord-btn:active {
+            transform: translateY(1px);
         }
     </style>
 </head>
 <body>
 
-    <h1>Hello</h1>
+    <header>
+        <div class="logo-container">
+            <img src="WhiteCompany.png" alt="White Company Icon" class="company-logo">
+            <span class="company-name">WHITE COMPANY</span>
+        </div>
+        <nav>
+            <a href="#" class="active">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="lines-background"></div> <h1>Welcome to <span class="highlight">White Company</span></h1>
+        <p>The Only company run by a small dev that's trying to make projects that are entertaining and kickstarting the fun</p>
+        <a href="https://discord.gg/tcSqqJXc3A" target="_blank" class="discord-btn">
+            Discord Invite
+        </a>
+    </main>
 
 </body>
 </html>
