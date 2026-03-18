@@ -119,10 +119,10 @@
         /* "HOME" text appearing on hover */
         .home-label {
             position: absolute;
-            right: 35px; /* Sits to the left of the icon */
+            right: 35px; 
             font-family: 'Cavilant', sans-serif;
             font-size: 14px;
-            color: #00e5ff; /* Change this hex code to match your exact drawing color */
+            color: #252525; /* Updated color */
             opacity: 0;
             transform: translateX(10px);
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -142,7 +142,7 @@
             right: 11px; 
             width: 2px;
             height: 0;
-            background-color: #00e5ff; /* Change this hex code to match your exact drawing color */
+            background-color: #252525; /* Updated color */
             transition: height 0.3s ease;
             z-index: 1;
         }
@@ -150,23 +150,24 @@
         /* Horizontal animated line */
         .nav-line-horizontal {
             position: absolute;
-            top: 150px; /* Connects to the bottom of the vertical line */
+            /* Top anchors dynamically to the drop height */
+            top: calc(var(--drop-height, 150px) + 30px); 
             right: 11px;
             height: 2px;
             width: 0;
-            background-color: #00e5ff; /* Change this hex code to match your exact drawing color */
-            transition: width 0.4s ease; /* Retracts instantly when mouse leaves */
+            background-color: #252525; /* Updated color */
+            transition: width 0.4s ease; 
             z-index: 1;
         }
 
-        /* Triggering the lines on hover */
+        /* Triggering the lines on hover utilizing the JS variables */
         .nav-container:hover .nav-line-vertical {
-            height: 120px; /* Expands downwards */
+            height: var(--drop-height, 150px);
         }
 
         .nav-container:hover .nav-line-horizontal {
-            width: 85vw; /* Expands left across the screen */
-            transition-delay: 0.3s; /* Waits for the vertical line to finish expanding */
+            width: var(--stretch-width, 50vw); 
+            transition-delay: 0.3s; 
         }
 
         main {
@@ -271,5 +272,28 @@
         </div>
     </main>
 
+    <script>
+        function updateLineAnchors() {
+            const navContainer = document.querySelector('.nav-container');
+            const targetLine = document.querySelector('.fancy-line');
+            
+            if (navContainer && targetLine) {
+                const navRect = navContainer.getBoundingClientRect();
+                const targetRect = targetLine.getBoundingClientRect();
+                
+                // 1. Calculate the exact vertical drop needed from the icon to the main line
+                const dropHeight = (targetRect.top - navRect.top) - 30 + 1; // +1 helps it physically touch
+                navContainer.style.setProperty('--drop-height', `${dropHeight}px`);
+                
+                // 2. Calculate horizontal stretch from the right side of the screen to the right edge of the main line
+                const stretchWidth = (navRect.right - 11) - targetRect.right;
+                navContainer.style.setProperty('--stretch-width', `${stretchWidth}px`);
+            }
+        }
+
+        // Run the calculation when the window loads and whenever it's resized
+        window.addEventListener('resize', updateLineAnchors);
+        window.addEventListener('load', updateLineAnchors);
+    </script>
 </body>
 </html>
