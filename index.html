@@ -45,7 +45,6 @@
         .home-icon {
             height: 24px;
             width: auto;
-            /* Inverts the black icon to white so it shows up on the dark background */
             filter: invert(1); 
             opacity: 0.7;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
@@ -57,10 +56,9 @@
             text-decoration: none;
         }
 
-        /* Hover animation for the house icon */
         nav a:hover .home-icon {
             opacity: 1;
-            transform: scale(1.2); /* Scales up slightly on hover */
+            transform: scale(1.2); 
         }
 
         main {
@@ -74,28 +72,28 @@
         }
 
         .content-wrapper {
-            max-width: 600px;
+            /* Width fits exactly to the longest element inside it (the title) */
+            width: fit-content; 
         }
 
         h1 {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 700; /* Bolds "White Company" */
             margin: 0;
             color: white;
+            white-space: nowrap; /* Forces the title to stay on a single line */
         }
 
-        /* The animated line under the title */
+        .normal-weight {
+            font-weight: 400; /* Removes bolding from "Welcome to" */
+        }
+
+        /* The expanded line under the title */
         .fancy-line {
             height: 2px;
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
             margin: 15px 0 20px 0;
-            width: 80px; /* Starting width */
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Triggers the line to expand when hovering over the content area */
-        .content-wrapper:hover .fancy-line {
-            width: 100%;
+            width: 100%; /* Fully expanded permanently */
         }
 
         p {
@@ -104,6 +102,8 @@
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
             margin: 0 0 35px 0;
+            max-width: 600px; /* Applies the limit only to the description */
+            white-space: normal; /* Allows description to wrap if needed */
         }
 
         /* 3D Offset Discord Button */
@@ -111,28 +111,27 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #3b4cca; /* Deep blue main body */
+            background-color: #3b4cca; 
             color: white;
             padding: 12px 30px;
             border-radius: 8px;
             font-size: 18px;
             font-weight: 700;
             text-decoration: none;
-            /* Creates the lighter blue shadow offset to the bottom left */
             box-shadow: -6px 6px 0px #58A6FF;
             transition: transform 0.15s ease, box-shadow 0.15s ease;
             margin-top: 5px;
+            width: fit-content; /* Prevents button from stretching full width */
         }
 
-        /* Press animation for the 3D button */
         .discord-btn:hover {
-            transform: translate(-2px, 2px); /* Moves down and left slightly */
-            box-shadow: -4px 4px 0px #58A6FF; /* Shadow shrinks to simulate pressing */
+            transform: translate(-2px, 2px); 
+            box-shadow: -4px 4px 0px #58A6FF; 
         }
 
         .discord-btn:active {
-            transform: translate(-6px, 6px); /* Fully pressed state */
-            box-shadow: 0px 0px 0px #58A6FF; /* Shadow disappears */
+            transform: translate(-6px, 6px); 
+            box-shadow: 0px 0px 0px #58A6FF; 
         }
     </style>
 </head>
@@ -152,7 +151,7 @@
 
     <main>
         <div class="content-wrapper">
-            <h1>Welcome to White Company</h1>
+            <h1><span class="normal-weight">Welcome to</span> White Company</h1>
             <div class="fancy-line"></div>
             <p>The Only company run by a small dev that's trying to make projects that are entertaining and kickstarting the fun</p>
             <a href="https://discord.gg/tcSqqJXc3A" target="_blank" class="discord-btn">
